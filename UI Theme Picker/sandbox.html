@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	    <script type="text/javascript" src="sandbox.js"></script>
+	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	    <style type="text/css">
+	    	.blue {
+	    		color:blue;
+	    	}
+		    .panel-primary {
+		      	color: black;
+		      	background-color:lightgrey;
+		    }
+
+		    .panel-primary2 {
+			  	color: lightgrey;
+			  	background-color:black;
+		    }
+
+		    .panel-primary3 {
+		    	color: black;
+			  	background-color:white;
+		    }
+
+		    .panel-success {
+			  	color: green;
+			  	background-color:lightgreen;
+			}
+
+			.panel-success2 {
+			  	color: lightgreen;
+			  	background-color:green;
+		    }
+
+		    .panel-success3 {
+		    	color: green;
+			  	background-color:mediumseagreen;
+		    }
+
+		    .panel-info {
+			  	color: blue;
+			  	background-color:lightblue;
+			}
+
+			.panel-info2 {
+			  	color: white;
+			  	background-color:darkblue;
+		    }
+
+		    .panel-info3 {
+		    	color: blue;
+			  	background-color:mediumturquoise;
+		    }
+
+		    .panel-warning {
+			  	color: red;
+			  	background-color:white;
+			}
+
+			.panel-warning2 {
+			  	color: white;
+			  	background-color:red;
+		    }
+
+		    .panel-warning3 {
+		    	color: red;
+			  	background-color:mediumvioletred;
+		    }
+
+		    .panel-danger {
+			  	color: purple;
+			  	background-color:plum;
+			}
+
+			.panel-danger2 {
+			  	color: white;
+			  	background-color:purple;
+		    }
+
+		    .panel-danger3 {
+		    	color: purple;
+			  	background-color:mediumpurple;
+		    }
+
+	    </style>
+ 	</head>
+ 	<body ng-app="MyApp" ng-controller="MyController as ctrl" class = "panel panel-default panel-primary3" ng-class="ctrl.userObjectSelection.class3">
+	    <div >
+			<div>
+			  	<h3>Select a theme</h3>
+			  		<div>
+					<input type="radio"
+						   name="color2"
+						   ng-value="ctrl.defaultValue"
+						   ng-model="ctrl.userObjectSelection"> None
+					</div>	   
+					<div>
+					<input type="radio"
+						   name="color2"
+						   ng-value="ctrl.successValue"
+						   ng-model="ctrl.userObjectSelection"> Success
+					</div>
+					<div>
+					<input type="radio"
+						   name="color2"
+						   ng-value="ctrl.infoValue"
+						   ng-model="ctrl.userObjectSelection"> Info
+					</div>	   
+					<div>	   	
+					<input type="radio"
+						   name="color2"
+						   ng-value="ctrl.warningValue"
+					       ng-model="ctrl.userObjectSelection"> Warning
+					</div>
+					<div>
+					<input type="radio"
+						   name="color2"
+						   ng-value="ctrl.dangerValue"
+					       ng-model="ctrl.userObjectSelection"> Danger
+					</div> 
+					<hr>
+		  	</div>
+
+
+
+		  	<div ng-class="ctrl.userObjectSelection.class" class="panel panel-primary">
+				Hello! I'm Div 1
+		  	</div>
+
+
+			<div ng-class="ctrl.userObjectSelection.class2" class="panel panel-primary2">
+				Hello! I'm Div 2
+			</div>
+	    </div>
+
+	    <hr>
+
+	    <div class="row">
+	  		<div class = "col-md-6">
+		    	<h4>My files</h4>
+		    	<div>
+		    		<input type="checkbox" ng-model="ctrl.hideSubs" name="hideS"> Hide all 
+		    	</div>
+		    	<div>
+		    		<ul ng-repeat="folder in ctrl.folderList" class="blue">	  
+             				<img src="icon.gif" height="15" width="15"><span ng-bind="folder.name"></span>
+             				<li ng-repeat="subFolder in folder.subFolders" ng-class="ctrl.userObjectSelection.class3" ng-hide="ctrl.hideSubs">
+             					<span ng-bind="subFolder.name"></span>
+             				</li>
+		     		</ul>
+		    	</div>
+	    	</div>
+	    	<div class = "col-md-6">
+		    	<h4>Add files</h4>
+		    	<div>
+		    		<input type="text" ng-model="ctrl.fileName" name="FN" placeholder="Item Name"> 
+		    		<button ng-click="ctrl.addFolders(ctrl.fileName)">Add file</button>
+		    		
+		    		<div ng-repeat="folder in ctrl.folderList">
+	        			<input type="radio"
+					             name="folderlist"
+					             ng-value="$index"
+					             ng-model="ctrl.folderSelection">
+         				<span ng-bind="folder.name"></span>
+	     			</div>
+		    	</div>
+	    	</div>
+	    </div>
+
+	    
+
+
+ 	</body>
+</html>
