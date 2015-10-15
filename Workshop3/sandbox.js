@@ -16,7 +16,7 @@ angular.module('MyApp', [])
   }
 
   self.submitSongs = function() {
-    console.log(CONVERSIONFUNCS.converttoJson(MY_SONGS, self.expSelected));
+    self.returndata = CONVERSIONFUNCS.converttoJson(MY_SONGS, self.expSelected));
   }
 
   self.isExpAllowed = function() {
@@ -34,7 +34,6 @@ angular.module('MyApp', [])
   }
 
   self.checkAgeExp = function() {
-    console.log('hi');
     if(self.age < 20 || !self.age) {
       self.expSelected = self.explicits[0].name;
     }
