@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script type="text/javascript" src="sandbox.js"></script>
+    <script type="text/javascript" src="services.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style type="text/css"> </style>
+  </head>
+  <body ng-app="MyApp" class="panel">
+    <div ng-controller="YourController as yourCtrl">
+
+      <div class="row">
+        <div class = "col-md-6">
+          
+            Name: <input type="text" ng-model="yourCtrl.name" placeholder="Name">
+            
+        </div>
+
+        <div class = "col-md-6">
+          <h3> Genre: </h3>
+
+          <div ng-repeat="genre in yourCtrl.genres">
+                <input type="radio"
+                       name="genrelist"
+                       ng-model="yourCtrl.genreSelected"
+                       ng-value="genre.name"
+                       ng-change="yourCtrl.updateSonglist()">
+                <span ng-bind="genre.name"></span> Hits
+          </div>
+        </div>
+      </div>
+
+
+       <div class="row">
+        <div class = "col-md-6">
+          
+            Age: <input type="number" ng-model="yourCtrl.age" ng-change = "yourCtrl.checkAgeExp()" placeholder="Age">
+            
+        </div>
+
+        <div class = "col-md-6">
+          <h3> Allow explicit? </h3>
+
+          <div ng-repeat="exp in yourCtrl.explicits">
+              
+                  <input type="radio"
+                         name="explist"
+                         ng-model="yourCtrl.expSelected"
+                         ng-value = "exp.name"
+                         ng-change = "yourCtrl.checkExp()">
+                   <span ng-bind="exp.name"></span>
+              
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row"> 
+        <div class = "col-md-6">
+          <h3> Songs: </h3>
+
+          <div ng-repeat="song in yourCtrl.songs" >
+            <div ng-show="song.genre==yourCtrl.genreSelected">
+                <input type="checkbox"
+                       name="songlist"
+                       ng-model="song.checked">
+                <span ng-bind="song.name"></span>
+            </div>
+          </div>
+
+          <button ng-click="yourCtrl.submitSongs()">Submit</button>
+        </div>
+
+         
+        </div>
+      </div>
+
+
+      
+
+    </div>
+
+
+
+
+  </body>
+</html>
