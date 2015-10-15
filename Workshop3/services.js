@@ -4,26 +4,24 @@ angular.module('MyApp')
 	var self = this;
 
 	self.converttoJson = function(arrayofsongs, exp) {
-		var outputarray = [];
-		
-		for (var i = 0; i < arrayofsongs.length; i++) {
-			if(arrayofsongs[i].checked)
-			{
-				outputarray.push({name: arrayofsongs[i].name, type: exp});
-			}
-		}
+	var outputarray = [];
 
-		return angular.toJson(outputarray);
+	for (var i = 0; i < arrayofsongs.length; i++) {
+		if(arrayofsongs[i].checked)
+			outputarray.push({name: arrayofsongs[i].name, type: exp});
+	}
+
+	return angular.toJson(outputarray);
 	};
 })
 
 
 .value('ALLOW_EXPLCIT', [{
-  name: 'Clean',
-  inactive: 'False'
+	name: 'Clean',
+	inactive: 'False'
 }, {
-   name: 'Explicit',
-   inactive: 'True' 
+	name: 'Explicit',
+	inactive: 'True' 
 }])
 
 .value('GENRES', [{
@@ -32,30 +30,26 @@ angular.module('MyApp')
 	name: 'Rock'
 }, {
 	name: 'Rap'
+}, {
+	name: 'All'
 }])
 
 .value('MY_SONGS', [{
-  name: 'PopSong1',
-  genre: 'Pop',
-  type: 'Clean'
+	name: 'PopSong1',
+	genre: 'Pop'
 }, {
-  name: 'PopSong2',
-  genre: 'Pop',
-  type: 'Explicit'
+	name: 'PopSong2',
+	genre: 'Pop'
 }, {
-  name: 'RockSong2',
-  genre: 'Rock',
-  type: 'Explicit'
+	name: 'RockSong2',
+	genre: 'Rock'
 }, {
-  name: 'RockSong1',
-  genre: 'Rock',
-  type: 'Clean'
+	name: 'RockSong1',
+	genre: 'Rock'
 }, {
-  name: 'RAPSong1',
-  genre: 'Rap',
-  type: 'Clean'
+	name: 'RAPSong1',
+	genre: 'Rap'
 }, {
-  name: 'RAPSong2',
-  genre: 'Rap',
-  type: 'Explcit'
+	name: 'RAPSong2',
+	genre: 'Rap'
 }])
