@@ -11,11 +11,34 @@ angular.module('MyApp')
 
 		return sum/arrayOfNumbers.length;
 	};
+
+	self.calculateGrade = function(avg) {
+		var grade = null;
+
+		if (avg >= 95)
+			grade = 'A+';
+
+		else if (avg < 95 && avg >= 85) 
+			grade = 'A';
+
+		else if (avg < 85 && avg >= 75) 
+			grade = 'B';
+		
+		else if (avg < 75 && avg >= 65) 
+			grade = 'C';
+		
+		else if (avg < 65 && avg >= 50) 
+			grade = 'D';
+		
+		else 
+			grade = 'F';
+		
+		return grade;
+	};
 })
 
-.factory('Assignment', function(MathExpressions) {
 
-	var avgGrade = 'Red'
+.factory('Assignment', function(MathExpressions) {
 
 	function Assignment(name, assignmentname, grade) {
 		this.name = name;
@@ -23,27 +46,13 @@ angular.module('MyApp')
 		this.grade = grade;
 	}
 
-	Assignment.prototype.getAverage = function() {
-		return this.avgGrade;
-	};
-
 	Assignment.prototype.getassignmentName = function() {
 		return this.assignmentname;
 	};
 
-	Assignment.prototype.updateAverage = function() {
-		this.avgGrade = MathExpressions.calculateAvg(Assignment);
+	Assignment.prototype.getGrade = function() {
+		return this.grade;
 	};
 
 	return Assignment;
 })
-
-.value('MY_PASSWORD', 'JELLO24')
-
-.value('MY_FOLDERS', [{
-  name: 'Folder1'
-}, {
-  name: 'Folder2'
-}, {
-  name: 'Folder3'
-}])
