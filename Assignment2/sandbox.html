@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script type="text/javascript" src="sandbox.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style type="text/css"> 
+
+      .buttons
+      {
+          text-decoration: none;
+          line-height: 10em;
+          display: block;
+          float: left;
+          padding-left: 50px;
+          padding-right: 50px;
+      }
+
+      .buttonone {
+        background-color: red;
+        color: red;
+      }
+
+      .buttontwo {
+        background-color: blue;
+        color: blue;
+      }
+
+      .buttonthree {
+        background-color: green;
+        color: green;
+      }
+
+      .buttonfour {
+        background-color: yellow;
+        color: yellow;
+      }
+
+      .flash {
+        background-color: white;
+        color: white;
+      }
+
+    </style>
+  </head>
+  <body ng-app="MyApp" class="panel">
+    <div ng-controller="YourController as ctrl">
+
+      <div class="row">
+        <div class = "col-md-6">
+          <h2>Welcome to Simon</h2>
+        </div>
+      </div>
+
+      <div ng-show="ctrl.startGame == 1" class="row">
+        <div class = "col-md-6">
+          <span>Turn:</span>
+          <span ng-bind="ctrl.turn"></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class = "col-md-4">
+          <button type="button" ng-class="ctrl.buttonOne.class" ng-value="ctrl.buttonOne.color" ng-click="ctrl.submitbuttonOne()" ng-disabled="ctrl.loopCount == ctrl.gameCount || ctrl.turn=='simon' || ctrl.startGame!=1">Button1</button>
+          <button type="button" ng-class="ctrl.buttonTwo.class" ng-value="ctrl.buttonTwo.color" ng-click="ctrl.submitbuttonTwo()" ng-disabled="ctrl.loopCount == ctrl.gameCount || ctrl.turn=='simon' || ctrl.startGame!=1">Button2</button>
+        </div>
+
+        <div class = "col-md-4">
+          <div ng-show="ctrl.turn=='user'" ng-repeat="user in ctrl.userArray">
+            <span>User Color </span><span ng-bind="$index+1"></span><span>: </span>
+            <span ng-bind="user.color"></span>
+          </div>   
+
+
+          <div ng-show="ctrl.turn=='simon'" ng-repeat="simon in ctrl.simonArrayCopy">
+            <span>Simon Color </span><span ng-bind="$index+1"></span><span>: </span>
+            <span ng-bind="simon.color"></span>
+          </div> 
+        </div>
+        <div class = "col-md-4">
+        
+        </div>
+      </div> 
+
+      <div class="row">
+        <div class = "col-md-6">
+          <button type="button" ng-class="ctrl.buttonThree.class" ng-value="ctrl.buttonThree.color" ng-click="ctrl.submitbuttonThree()" ng-disabled="ctrl.loopCount == ctrl.gameCount || ctrl.turn=='simon' || ctrl.startGame!=1">Button3</button>
+          <button type="button" ng-class="ctrl.buttonFour.class" ng-value="ctrl.buttonFour.color" ng-click="ctrl.submitbuttonFour()" ng-disabled="ctrl.loopCount == ctrl.gameCount || ctrl.turn=='simon' || ctrl.startGame!=1">Button4</button>
+        </div>
+      </div>   
+
+      
+
+      <div class="row">
+        <div class = "col-md-6">
+          <button type="button" ng-hide="ctrl.startGame == 1" ng-click="ctrl.startGame()">Start Game</button>
+        </div>
+      </div>   
+
+ 
+       <div ng-hide="ctrl.startGame == 1 || ctrl.firstPlay==0" class="row">
+        <div class = "col-md-6">
+          <h1> GAME OVER - Click on Start Game to play again</h1>
+        </div>
+      </div>   
+
+
+
+     
+    </div>
+  </body>
+</html>
