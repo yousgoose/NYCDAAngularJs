@@ -28,12 +28,13 @@ angular.module('MyApp', [])
     }, 200)
   };
 
-  self.startGame = function () {
+  self.beginGame = function () {
     self.turn = 'user';
     self.gameCount = 1; //level
     self.loopCount = 0;
     self.userArray = [];
     self.simonArray = [];
+    self.simonArrayCopy = [];
     self.startGame = 1;
 
     self.goSimon();
